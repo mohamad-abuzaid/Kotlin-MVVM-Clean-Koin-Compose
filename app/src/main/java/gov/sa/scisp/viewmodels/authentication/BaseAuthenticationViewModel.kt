@@ -25,15 +25,7 @@ class PreviewAuthenticationViewModel(application: Application = Application()) :
     private val _loginUiState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
     override val loginUiState: StateFlow<LoginUiState> = _loginUiState
 
-    override fun userLogin(nin: String) {
-        //TODO("Not yet implemented")
-    }
-
-    override fun vipLogin(username: String, password: String) {
-        //TODO("Not yet implemented")
-    }
-
-    override fun vvipLogin(username: String, password: String) {
-        //TODO("Not yet implemented")
-    }
+    override fun userLogin(nin: String) {}
+    override fun vipLogin(username: String, password: String) {}
+    override fun vvipLogin(username: String, password: String) {}
 }
