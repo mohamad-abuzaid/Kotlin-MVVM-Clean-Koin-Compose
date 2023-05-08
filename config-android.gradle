@@ -1,0 +1,56 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// COMMON ANDROID CONFIG SETTINGS                                                                 //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+android {
+//  namespace 'gov.sa.sctmt'
+
+  compileSdkVersion versions.compileSdk
+  buildToolsVersion versions.buildTools
+
+  defaultConfig {
+    minSdkVersion versions.minSdk
+    targetSdkVersion versions.targetSdk
+
+    versionName '0.1'
+    versionCode 1
+
+    testInstrumentationRunner deps.JUnitRunner
+    setProperty("archivesBaseName", "curr-v$versionName")
+  }
+
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+      returnDefaultValues = true
+      all {
+        jvmArgs '-noverify'
+      }
+    }
+  }
+
+  packagingOptions {
+    exclude("META-INF/*.kotlin_module")
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/license.txt'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/NOTICE.txt'
+    exclude 'META-INF/notice.txt'
+    exclude 'META-INF/ASL2.0'
+  }
+
+  buildFeatures {
+    buildConfig = true
+  }
+}

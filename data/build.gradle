@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply from: '../config-android.gradle'
+apply from: '../config-properties.gradle'
+
+android {
+    namespace 'gov.sa.scisp.data'
+}
+
+dependencies {
+    api project(':domain')
+
+    networking()
+    room()
+    testing()
+}

@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply from: '../config-android.gradle'
+apply from: '../config-properties.gradle'
+
+android {
+    namespace 'gov.sa.scisp.di'
+}
+
+dependencies {
+    implementation project(':data')
+
+    testing()
+}

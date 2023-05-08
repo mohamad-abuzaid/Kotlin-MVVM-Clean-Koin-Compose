@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SCISP</string>
+
+    <string name="title_activity_authentication">Authentication</string>
+
+    <!--    LOGIN-->
+    <string name="login_success">Login Success</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="login_button">Login</string>
+
+    <!--    RESPONSE ERRORS-->
+    <string name="session_timeout">Session timed out. Please login again.</string>
+    <string name="service_not_available">Service unavailable now. Please try again later.</string>
+    <string name="connection_time_out">Connection timed out. Please check your Internet connection and try again</string>
+    <string name="no_connection">No connection, please check your Internet connection and try again</string>
+    <string name="vpn_or_outside_ksa">The used internet network is not secure or you are outside the KSA, please connect to the Ministry\'s VPN and try again</string>
+    <string name="meeting_error_internal_server_error">Internal Server Error</string>
+    <string name="unknown_error">An error occurred. Please contact the technical support</string>
+    <string name="vip_login">VIP Login</string>
+    <string name="user_login">User Login</string>
+
+</resources>

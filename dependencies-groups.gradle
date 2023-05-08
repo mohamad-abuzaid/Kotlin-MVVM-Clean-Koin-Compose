@@ -1,0 +1,120 @@
+def Group(Closure closure) {
+  closure.delegate = dependencies
+  return closure
+}
+
+ext {
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // KOTLIN                                                                                     //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  kotlin = Group {
+    api deps.kotlin.lib
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // KOIN                                                                                     //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  koin = Group {
+    api deps.koin.core
+    api deps.koin.android
+    api deps.koin.compose
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // NETWORKING                                                                                 //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  networking = Group {
+    api deps.retrofit.retrofit
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.logging
+  }
+
+  jsonParse = Group {
+    implementation deps.google_gson
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // ROOM                                                                                 //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  room = Group {
+    api deps.room.room
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // COROUTINES                                                                                         //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  coroutines = Group {
+    api deps.coroutines.core
+    api deps.coroutines.android
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // VIEW                                                                                       //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  view = Group {
+    implementation deps.support.core_ktx
+    implementation deps.support.appcompat
+    implementation deps.support.activity
+    implementation deps.support.fragment
+    implementation deps.navigation.navigationFragment
+    implementation deps.navigation.navigationUi
+    implementation deps.navigation.dynamic
+    implementation deps.glide.glide
+    kapt deps.glide.compiler
+  }
+
+  jetCompose = Group {
+    def composeBom = platform(deps.compose.platform)
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation deps.compose.material3
+    implementation deps.compose.navigation
+    implementation deps.compose.constraintlayout
+    implementation deps.compose.preview
+    debugImplementation deps.compose.previewDebug
+
+    implementation deps.compose.activities
+    implementation deps.compose.viewmodels
+
+    androidTestImplementation deps.compose.testUi
+    debugImplementation deps.compose.testDebug
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // TOOLS                                                                                      //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  tools = Group {
+    kapt deps.parceler.parceler
+    implementation deps.parceler.api
+    implementation deps.timber
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // TESTING                                                                                    //
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
+  testing = Group {
+    testImplementation deps.mockito.core
+    testImplementation deps.mockito.inline
+    testImplementation deps.mockito.kotlin
+
+    androidTestImplementation(deps.runner) {
+      exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    testImplementation deps.androidxJunit
+    androidTestImplementation deps.androidxJunit
+    testImplementation deps.mockwebserver
+    testImplementation deps.coroutines.test
+  }
+}

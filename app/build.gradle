@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply from: '../config-android.gradle'
+apply from: '../config-properties.gradle'
+
+android {
+    namespace 'gov.sa.scisp'
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    defaultConfig {
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.7"
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// DEPENDENCIES                                                                                   //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':di')
+
+    tools()
+    view()
+    jetCompose()
+    testing()
+}
