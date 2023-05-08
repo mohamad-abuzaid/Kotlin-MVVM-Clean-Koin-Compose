@@ -22,8 +22,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import gov.sa.scisp.R
 import gov.sa.scisp.states.authentication.LoginUiState
-import gov.sa.scisp.viewmodels.authentication.AuthenticationViewModel
-import org.koin.androidx.compose.getViewModel
+import gov.sa.scisp.viewmodels.authentication.BaseAuthenticationViewModel
+import gov.sa.scisp.viewmodels.authentication.PreviewAuthenticationViewModel
+import org.koin.androidx.compose.koinViewModel
 
 /**
  * Created by "Mohamad Abuzaid" on 08/05/2023.
@@ -34,8 +35,9 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun VipLoginScreen(
     navController: NavController,
+    authViewModel: BaseAuthenticationViewModel = koinViewModel()
 ) {
-    val authViewModel: AuthenticationViewModel = getViewModel()
+
     val loginUiState by authViewModel.loginUiState.collectAsState(initial = LoginUiState.Idle)
 
     val onLoginClick: (String, String) -> Unit = { username, password ->
@@ -101,5 +103,8 @@ fun VipLoginScreen(
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewVipLoginScreen() {
-    VipLoginScreen(rememberNavController())
+    VipLoginScreen(
+        rememberNavController(),
+        PreviewAuthenticationViewModel()
+    )
 }

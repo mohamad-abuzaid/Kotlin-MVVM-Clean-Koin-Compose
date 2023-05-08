@@ -1,7 +1,6 @@
 package gov.sa.scisp.viewmodels.authentication
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import gov.sa.scisp.domain.authentication.requests.UserLoginRequest
 import gov.sa.scisp.domain.authentication.requests.VipLoginRequest
@@ -28,13 +27,13 @@ class AuthenticationViewModel(
     private val userLoginUseCase: UserLoginUseCase,
     private val vipLoginUseCase: VipLoginUseCase,
     private val vvipLoginUseCase: VvipLoginUseCase,
-) : AndroidViewModel(application) {
+) : BaseAuthenticationViewModel(application) {
 
     private val _loginUiState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
-    val loginUiState: StateFlow<LoginUiState> = _loginUiState.asStateFlow()
+    override val loginUiState: StateFlow<LoginUiState> = _loginUiState.asStateFlow()
 
     private var loginJob: Job? = null
-    fun userLogin(nin: String) {
+    override fun userLogin(nin: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading
@@ -53,7 +52,7 @@ class AuthenticationViewModel(
         }
     }
 
-    fun vipLogin(username: String, password: String) {
+    override fun vipLogin(username: String, password: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading
@@ -72,7 +71,7 @@ class AuthenticationViewModel(
         }
     }
 
-    fun vvipLogin(username: String, password: String) {
+    override fun vvipLogin(username: String, password: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading

@@ -28,9 +28,8 @@ import gov.sa.scisp.R
  */
 
 @Composable
-fun LoginScreen(
-    navController: NavController,
-) {
+fun LoginScreen(navController: NavController) {
+
     var tabIndex by remember { mutableStateOf(0) }
 
     val padding = dimensionResource(R.dimen.login_screen_padding)
