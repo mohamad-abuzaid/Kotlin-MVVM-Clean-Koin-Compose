@@ -1,7 +1,8 @@
 package gov.sa.scisp.di
 
 import gov.sa.scisp.viewmodels.authentication.AuthenticationViewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
+import gov.sa.scisp.viewmodels.authentication.BaseAuthenticationViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -9,5 +10,5 @@ import org.koin.dsl.module
  * Email: mabuzaid@sure.com.sa
  */
 val viewModelsModule = module {
-    viewModelOf(::AuthenticationViewModel)
+    viewModel<BaseAuthenticationViewModel> { AuthenticationViewModel(get(), get(), get(), get()) }
 }

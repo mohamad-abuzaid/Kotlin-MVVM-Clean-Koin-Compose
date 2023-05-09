@@ -40,10 +40,6 @@ fun VipLoginScreen(
 
     val loginUiState by authViewModel.loginUiState.collectAsState(initial = LoginUiState.Idle)
 
-    val onLoginClick: (String, String) -> Unit = { username, password ->
-        authViewModel.vipLogin(username, password)
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -75,7 +71,7 @@ fun VipLoginScreen(
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.login_screen_spacing)))
 
-        Button(onClick = { onLoginClick(username.text, password.text) }) {
+        Button(onClick = { authViewModel.vipLogin(username.text, password.text) }) {
             Text(stringResource(R.string.login_button))
         }
 
