@@ -64,10 +64,7 @@ ext {
     implementation deps.support.core_ktx
     implementation deps.support.appcompat
     implementation deps.support.activity
-    implementation deps.support.fragment
-    implementation deps.navigation.navigationFragment
-    implementation deps.navigation.navigationUi
-    implementation deps.navigation.dynamic
+    implementation deps.support.splash
     implementation deps.glide.glide
     kapt deps.glide.compiler
   }
@@ -88,6 +85,11 @@ ext {
 
     androidTestImplementation deps.compose.testUi
     debugImplementation deps.compose.testDebug
+  }
+  
+  paging = Group {
+    implementation deps.paging.runtime
+    implementation deps.paging.compose
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
