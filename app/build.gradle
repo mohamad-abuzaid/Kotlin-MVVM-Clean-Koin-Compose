@@ -38,5 +38,6 @@ dependencies {
     tools()
     view()
     jetCompose()
+    paging()
     testing()
 }
