@@ -16,6 +16,7 @@ ext.deps = [
         'support'      : [
                 'core_ktx' : "androidx.core:core-ktx:$versions.kotlin",
                 'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
+                'material' : "com.google.android.material:material:1.9.0",
                 'activity' : "androidx.activity:activity-ktx:$versions.activity",
                 'splash'   : "androidx.core:core-splashscreen:1.0.1",
         ],

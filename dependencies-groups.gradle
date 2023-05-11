@@ -63,6 +63,7 @@ ext {
   view = Group {
     implementation deps.support.core_ktx
     implementation deps.support.appcompat
+    implementation deps.support.material
     implementation deps.support.activity
     implementation deps.support.splash
     implementation deps.glide.glide
