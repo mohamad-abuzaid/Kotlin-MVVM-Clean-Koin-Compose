@@ -8,7 +8,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SCISP"
+rootProject.name = "MVVM-Clean-Koin-Compose"
 include ':app'
 include ':di'
 include ':data'

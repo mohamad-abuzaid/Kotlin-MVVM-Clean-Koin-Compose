@@ -1,6 +1,7 @@
 package gov.sa.scisp.di
 
 import gov.sa.scisp.data.network.di.retrofitModule
+import gov.sa.scisp.data.network.service.LanguageApiService
 import gov.sa.scisp.data.network.service.LoginApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -12,5 +13,6 @@ import retrofit2.Retrofit
 val servicesModule = module {
     includes(retrofitModule)
 
+    single<LanguageApiService> { get<Retrofit>().create(LanguageApiService::class.java) }
     single<LoginApiService> { get<Retrofit>().create(LoginApiService::class.java) }
 }

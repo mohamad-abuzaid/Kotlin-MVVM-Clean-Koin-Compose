@@ -1,4 +1,4 @@
-package gov.sa.scisp.ui.authentication.screens.login
+package gov.sa.scisp.ui.authentication.screens.onboard
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
@@ -27,13 +27,13 @@ import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewMode
 import org.koin.androidx.compose.koinViewModel
 
 /**
- * Created by "Mohamad Abuzaid" on 08/05/2023.
+ * Created by "Mohamad Abuzaid" on 10/05/2023.
  * Email: mabuzaid@sure.com.sa
  */
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UserLoginScreen(
+fun OnboardScreen(
     navController: NavController,
     authViewModel: BaseAuthenticationViewModel = koinViewModel()
 ) {

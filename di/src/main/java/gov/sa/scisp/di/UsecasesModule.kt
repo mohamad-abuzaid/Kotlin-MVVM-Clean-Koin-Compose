@@ -1,8 +1,9 @@
 package gov.sa.scisp.di
 
-import gov.sa.scisp.domain.authentication.usecases.UserLoginUseCase
-import gov.sa.scisp.domain.authentication.usecases.VipLoginUseCase
-import gov.sa.scisp.domain.authentication.usecases.VvipLoginUseCase
+import gov.sa.scisp.domain.authentication.usecases.language.LanguageUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.UserLoginUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.VipLoginUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.VvipLoginUseCase
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -11,6 +12,12 @@ import org.koin.dsl.module
  * Email: mabuzaid@sure.com.sa
  */
 val useCasesModule = module {
+    factory {
+        LanguageUseCase(
+            languageRepository = get(),
+            dispatcher = get(named("defaultDispatcher"))
+        )
+    }
     factory {
         UserLoginUseCase(
             loginRepository = get(),

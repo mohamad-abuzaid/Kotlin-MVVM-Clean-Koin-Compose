@@ -1,4 +1,4 @@
-package gov.sa.scisp.domain.authentication.models
+package gov.sa.scisp.domain.authentication.models.login
 
 /**
  * Created by "Mohamad Abuzaid" on 06/05/2023.

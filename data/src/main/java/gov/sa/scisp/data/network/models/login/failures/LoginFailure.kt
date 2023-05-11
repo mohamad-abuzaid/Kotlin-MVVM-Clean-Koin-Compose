@@ -1,7 +1,7 @@
 package gov.sa.scisp.data.network.models.login.failures
 
 import gov.sa.scisp.domain.utils.wrappers.CallFailure
-import gov.sa.scisp.domain.utils.wrappers.LoginErrorCodes
+import gov.sa.scisp.domain.utils.wrappers.error_code.LoginErrorCodes
 
 /**
  * Created by "Mohamad Abuzaid" on 06/05/2023.

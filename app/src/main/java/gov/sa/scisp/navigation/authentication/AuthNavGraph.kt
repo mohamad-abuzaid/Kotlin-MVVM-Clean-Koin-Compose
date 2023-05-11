@@ -5,7 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import gov.sa.scisp.navigation.Graph
+import gov.sa.scisp.ui.authentication.screens.language.LanguageSelectScreen
 import gov.sa.scisp.ui.authentication.screens.login.LoginScreen
+import gov.sa.scisp.ui.authentication.screens.onboard.OnboardScreen
 
 /**
  * Created by "Mohamad Abuzaid" on 06/05/2023.
@@ -14,8 +16,10 @@ import gov.sa.scisp.ui.authentication.screens.login.LoginScreen
 fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.AUTH,
-        startDestination = AuthScreens.Login.route
+        startDestination = AuthScreens.LanguageSelect.route
     ) {
+        composable(route = AuthScreens.LanguageSelect.route) { LanguageSelectScreen(navController) }
+        composable(route = AuthScreens.Onboard.route) { OnboardScreen(navController) }
         composable(route = AuthScreens.Login.route) { LoginScreen(navController) }
 
 //        composable(

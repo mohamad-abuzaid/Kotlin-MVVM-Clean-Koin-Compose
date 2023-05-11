@@ -1,4 +1,4 @@
-package gov.sa.scisp.domain.authentication.requests
+package gov.sa.scisp.domain.authentication.requests.login
 
 import com.google.gson.annotations.SerializedName
 

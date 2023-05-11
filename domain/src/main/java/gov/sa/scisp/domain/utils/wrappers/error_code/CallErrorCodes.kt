@@ -1,4 +1,4 @@
-package gov.sa.scisp.domain.utils.wrappers
+package gov.sa.scisp.domain.utils.wrappers.error_code
 
 /**
  * Created by "Mohamad Abuzaid" on 07/05/2023.
@@ -12,10 +12,4 @@ object CallErrorCodes {
     const val SERVER_ERROR = 105
     const val CONNECTION_ERROR = 106
     const val UNKOWN_ERROR = 107
-}
-
-object LoginErrorCodes {
-    const val SUCCESS = 201
-    const val INTERNAL_SERVER_ERROR = 202
-    const val UNKOWN_ERROR = 203
 }

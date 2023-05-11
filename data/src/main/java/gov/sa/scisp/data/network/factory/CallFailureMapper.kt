@@ -1,6 +1,6 @@
 package gov.sa.scisp.data.network.factory
 
-import gov.sa.scisp.domain.utils.wrappers.CallErrorCodes
+import gov.sa.scisp.domain.utils.wrappers.error_code.CallErrorCodes
 import gov.sa.scisp.domain.utils.wrappers.CallFailure
 import retrofit2.HttpException
 import java.io.IOException

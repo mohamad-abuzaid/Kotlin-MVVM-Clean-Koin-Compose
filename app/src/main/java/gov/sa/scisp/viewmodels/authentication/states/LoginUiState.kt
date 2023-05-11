@@ -1,6 +1,6 @@
-package gov.sa.scisp.states.authentication
+package gov.sa.scisp.viewmodels.authentication.states
 
-import gov.sa.scisp.models.authentication.LoginDisplay
+import gov.sa.scisp.models.authentication.login.LoginDisplay
 
 /**
  * Created by "Mohamad Abuzaid" on 07/05/2023.

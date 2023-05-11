@@ -21,9 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import gov.sa.scisp.R
-import gov.sa.scisp.states.authentication.LoginUiState
-import gov.sa.scisp.viewmodels.authentication.BaseAuthenticationViewModel
-import gov.sa.scisp.viewmodels.authentication.PreviewAuthenticationViewModel
+import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
+import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
+import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 /**

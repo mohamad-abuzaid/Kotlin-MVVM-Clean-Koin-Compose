@@ -2,15 +2,20 @@ package gov.sa.scisp.viewmodels.authentication
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
-import gov.sa.scisp.domain.authentication.requests.UserLoginRequest
-import gov.sa.scisp.domain.authentication.requests.VipLoginRequest
-import gov.sa.scisp.domain.authentication.requests.VvipLoginRequest
-import gov.sa.scisp.domain.authentication.usecases.UserLoginUseCase
-import gov.sa.scisp.domain.authentication.usecases.VipLoginUseCase
-import gov.sa.scisp.domain.authentication.usecases.VvipLoginUseCase
-import gov.sa.scisp.domain.utils.wrappers.CallErrorCodes
-import gov.sa.scisp.models.mappers.toLoginDisplay
-import gov.sa.scisp.states.authentication.LoginUiState
+import gov.sa.scisp.domain.authentication.requests.language.LanguageRequest
+import gov.sa.scisp.domain.authentication.requests.login.UserLoginRequest
+import gov.sa.scisp.domain.authentication.requests.login.VipLoginRequest
+import gov.sa.scisp.domain.authentication.requests.login.VvipLoginRequest
+import gov.sa.scisp.domain.authentication.usecases.language.LanguageUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.UserLoginUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.VipLoginUseCase
+import gov.sa.scisp.domain.authentication.usecases.login.VvipLoginUseCase
+import gov.sa.scisp.domain.utils.wrappers.error_code.CallErrorCodes
+import gov.sa.scisp.models.authentication.languages.mappers.toLanguageDisplayList
+import gov.sa.scisp.models.authentication.login.mappers.toLoginDisplay
+import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
+import gov.sa.scisp.viewmodels.authentication.states.LanguageUiState
+import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,6 +29,7 @@ import java.io.IOException
  */
 class AuthenticationViewModel(
     application: Application,
+    private val languageUseCase: LanguageUseCase,
     private val userLoginUseCase: UserLoginUseCase,
     private val vipLoginUseCase: VipLoginUseCase,
     private val vvipLoginUseCase: VvipLoginUseCase,
@@ -31,6 +37,9 @@ class AuthenticationViewModel(
 
     private val _loginUiState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
     override val loginUiState: StateFlow<LoginUiState> = _loginUiState.asStateFlow()
+
+    private val _languageUiState = MutableStateFlow<LanguageUiState>(LanguageUiState.Idle)
+    override val languageUiState: StateFlow<LanguageUiState> = _languageUiState.asStateFlow()
 
     private var loginJob: Job? = null
     override fun userLogin(nin: String) {
@@ -86,6 +95,24 @@ class AuthenticationViewModel(
                 }
             } catch (ioe: IOException) {
                 _loginUiState.value = LoginUiState.Error(listOf(CallErrorCodes.UNKOWN_ERROR))
+            }
+        }
+    }
+
+    override fun fetchLanguages(nin: String) {
+        viewModelScope.launch {
+            _languageUiState.value = LanguageUiState.Loading
+            try {
+                val languageResponse = languageUseCase(LanguageRequest(nin))
+                if (languageResponse.error == null) {
+                    _languageUiState.value =
+                        LanguageUiState.Success(languageResponse.value?.toLanguageDisplayList())
+                } else {
+                    _languageUiState.value =
+                        LanguageUiState.Error(languageResponse.error?.errorIds?.toList() ?: listOf())
+                }
+            } catch (ioe: IOException) {
+                _languageUiState.value = LanguageUiState.Error(listOf(CallErrorCodes.UNKOWN_ERROR))
             }
         }
     }
