@@ -2,11 +2,12 @@ package gov.sa.scisp.viewmodels.authentication.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import gov.sa.scisp.models.authentication.languages.LanguageDisplay
+import gov.sa.scisp.models.authentication.login.LoginDisplay
 import gov.sa.scisp.viewmodels.authentication.states.LanguageUiState
 import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * Created by "Mohamad Abuzaid" on 08/05/2023.
@@ -27,7 +28,15 @@ abstract class BaseAuthenticationViewModel(application: Application) :
 class PreviewAuthenticationViewModel(application: Application = Application()) :
     BaseAuthenticationViewModel(application) {
 
-    private val _loginUiState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
+    private val _loginUiState = MutableStateFlow<LoginUiState>(
+        LoginUiState.Success(
+            LoginDisplay(
+                "Mohamad",
+                "Abuzaid",
+                "Ali"
+            )
+        )
+    )
     override val loginUiState: StateFlow<LoginUiState> = _loginUiState
 
     private val _languageUiState = MutableStateFlow<LanguageUiState>(LanguageUiState.Idle)
@@ -36,5 +45,13 @@ class PreviewAuthenticationViewModel(application: Application = Application()) :
     override fun userLogin(nin: String) {}
     override fun vipLogin(username: String, password: String) {}
     override fun vvipLogin(username: String, password: String) {}
-    override fun fetchLanguages(nin: String) {}
+    override fun fetchLanguages(nin: String) {
+        _languageUiState.value = LanguageUiState.Success(
+            listOf(
+                LanguageDisplay("English", "en"),
+                LanguageDisplay("Arabic", "ar"),
+                LanguageDisplay("Urdu", "ur"),
+            )
+        )
+    }
 }

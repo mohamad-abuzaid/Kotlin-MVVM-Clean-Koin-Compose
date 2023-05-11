@@ -99,7 +99,7 @@ fun OnboardScreen(
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewUserLoginScreen() {
-    UserLoginScreen(
+    OnboardScreen(
         rememberNavController(),
         PreviewAuthenticationViewModel()
     )
