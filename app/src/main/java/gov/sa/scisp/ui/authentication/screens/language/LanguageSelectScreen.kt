@@ -1,5 +1,6 @@
 package gov.sa.scisp.ui.authentication.screens.language
 
+import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -13,14 +14,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import gov.sa.scisp.domain.utils.storage.ILocalPreferencesStorage
+import gov.sa.scisp.domain.utils.storage.Preference
+import gov.sa.scisp.utils.LocalizationHelper
 import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.states.LanguageUiState
+import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
 
 /**
@@ -32,12 +38,21 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun LanguageSelectScreen(
     navController: NavController,
-    authViewModel: BaseAuthenticationViewModel = koinViewModel()
+    authViewModel: BaseAuthenticationViewModel = koinViewModel(),
+    prefs: ILocalPreferencesStorage = get()
 ) {
 
+    val context = LocalContext.current
     val languageUiState by authViewModel.languageUiState.collectAsState(initial = LanguageUiState.Idle)
 
-    var selectedLanguage by remember { mutableStateOf("ar") }
+    var selectedLanguage by remember {
+        mutableStateOf(
+            prefs.getValue(
+                Preference.LANGUAGE_KEY,
+                "ar"
+            )
+        )
+    }
     var dropdownExpanded by remember { mutableStateOf(false) }
 
     // Handle languageUiState
@@ -75,7 +90,10 @@ fun LanguageSelectScreen(
                             },
                             onClick = {
                                 dropdownExpanded = false
+                                prefs.putValue(Preference.LANGUAGE_KEY, language.code)
                                 selectedLanguage = language.code
+                                LocalizationHelper.setLocale(context, selectedLanguage)
+                                (context as Activity).recreate()
                             }
                         )
                     }
