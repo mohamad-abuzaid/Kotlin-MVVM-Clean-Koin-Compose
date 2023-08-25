@@ -21,9 +21,9 @@ ext.deps = [
                 'splash'   : "androidx.core:core-splashscreen:1.0.1",
         ],
         'koin'         : [
-                'core'     : "io.insert-koin:koin-core:$versions.koin",
-                'android'  : "io.insert-koin:koin-android:$versions.koin",
-                'compose'  : "io.insert-koin:koin-androidx-compose:$versions.koin",
+                'core'   : "io.insert-koin:koin-core:$versions.koin",
+                'android': "io.insert-koin:koin-android:$versions.koin",
+                'compose': "io.insert-koin:koin-androidx-compose:$versions.koin",
         ],
         'coroutines'   : [
                 'core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
@@ -47,31 +47,40 @@ ext.deps = [
                 'compiler': "androidx.room:room-compiler:$versions.room",
         ],
         'compose'      : [
-                'platform'        : "androidx.compose:compose-bom:2023.04.01",
-                'activities'      : "androidx.activity:activity-compose:$versions.activity",
-                'viewmodels'      : "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1",
-                'material3'       : "androidx.compose.material3:material3",
-                'navigation'      : "androidx.navigation:navigation-compose:$versions.nav_version",
-                'constraintlayout': "androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha09",
-                'preview'         : "androidx.compose.ui:ui-tooling-preview",
-                'previewDebug'    : "androidx.compose.ui:ui-tooling",
-                'testUi'          : "androidx.compose.ui:ui-test-junit4",
-                'testDebug'       : "androidx.compose.ui:ui-test-manifest",
+                'platform'    : "androidx.compose:compose-bom:$versions.compose_bom",
+                'activities'  : "androidx.activity:activity-compose:$versions.activity",
+                'viewmodels'  : "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1",
+                'material3'   : "androidx.compose.material3:material3:1.1.0",
+                'icons'       : "androidx.compose.material:material-icons-extended",
+                'navigation'  : "androidx.navigation:navigation-compose:$versions.nav_version",
+                'preview'     : "androidx.compose.ui:ui-tooling-preview",
+                'previewDebug': "androidx.compose.ui:ui-tooling",
+                'testUi'      : "androidx.compose.ui:ui-test-junit4",
+                'testDebug'   : "androidx.compose.ui:ui-test-manifest",
         ],
         'paging'       : [
                 'runtime': "androidx.paging:paging-runtime:3.1.1",
                 'compose': "androidx.paging:paging-compose:1.0.0-alpha19",
         ],
-        'glide'        : [
-                'glide'   : 'com.github.bumptech.glide:glide:4.12.0',
-                'compiler': 'com.github.bumptech.glide:compiler:4.12.0',
+        'media3'       : [
+                'exoplayer'  : "androidx.media3:media3-exoplayer:$versions.media3",
+                'dashSupport': "androidx.media3:media3-exoplayer-dash:$versions.media3",
+                'playback'   : "androidx.media3:media3-ui:$versions.media3",
         ],
+        'glide'        : [
+                'glide'   : "com.github.bumptech.glide:glide:4.12.0",
+                'compose' : "com.github.bumptech.glide:compose:1.0.0-alpha.1",
+                'compiler': "com.github.bumptech.glide:compiler:4.12.0",
+        ],
+        'coil'         : "io.coil-kt:coil-compose:2.4.0",
+        'ummalqura'    : "com.github.msarhan:ummalqura-calendar:2.0.1",
+        'bouquet'      : "io.github.grizzi91:bouquet:1.1.2",
         'google_gson'  : "com.google.code.gson:gson:2.9.1",
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // TOOLS                                                                                  //
         ////////////////////////////////////////////////////////////////////////////////////////////
-        'timber'       : 'com.jakewharton.timber:timber:5.0.1',
+        'timber'       : "com.jakewharton.timber:timber:5.0.1",
 
         'parceler'     : [
                 'parceler': "org.parceler:parceler:$versions.parceler",
@@ -95,5 +104,6 @@ ext.deps = [
         'androidxTest' : "androidx.test:core:1.1.0",
         'androidxJunit': "androidx.test.ext:junit:1.1.3",
         'androidxFTest': "androidx.fragment:fragment-testing:fragment",
-        'mockwebserver': "com.squareup.okhttp3:mockwebserver:4.3.1"
+        'mockwebserver': "com.squareup.okhttp3:mockwebserver:4.3.1",
+        'testfairy'    : "com.testfairy:testfairy-android-sdk:1.+@aar"
 ]

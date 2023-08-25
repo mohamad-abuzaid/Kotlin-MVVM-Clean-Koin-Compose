@@ -3,9 +3,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     configurations {
@@ -22,18 +20,6 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-        mavenLocal()
-        maven { url 'https://jitpack.io' }
-        jcenter()
-    }
-
-    dependencies { apply from: "$rootProject.rootDir/dependencies-groups.gradle" }
-}
-
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

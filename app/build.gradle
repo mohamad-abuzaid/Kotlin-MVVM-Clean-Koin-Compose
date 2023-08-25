@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply from: '../config-android.gradle'
 apply from: '../config-properties.gradle'
+apply from: '../dependencies-groups.gradle'
+apply from: '../dependencies-versions.gradle'
 
 android {
     namespace 'gov.sa.scisp'
@@ -23,7 +25,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = versions.compose_compiler
     }
 }
 
@@ -35,9 +37,11 @@ dependencies {
     implementation project(':domain')
     implementation project(':di')
 
+
     tools()
     view()
+    jsonParse()
+    media3()
     jetCompose()
-    paging()
     testing()
 }

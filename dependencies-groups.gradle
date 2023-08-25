@@ -66,8 +66,18 @@ ext {
     implementation deps.support.material
     implementation deps.support.activity
     implementation deps.support.splash
-    implementation deps.glide.glide
-    kapt deps.glide.compiler
+    implementation deps.ummalqura
+    implementation deps.bouquet
+    implementation deps.coil
+//    implementation deps.glide.glide
+//    implementation deps.glide.compose
+//    kapt deps.glide.compiler
+  }
+
+  media3 = Group {
+    implementation deps.media3.exoplayer
+    implementation deps.media3.dashSupport
+    implementation deps.media3.playback
   }
 
   jetCompose = Group {
@@ -76,8 +86,8 @@ ext {
     androidTestImplementation composeBom
 
     implementation deps.compose.material3
+    implementation deps.compose.icons
     implementation deps.compose.navigation
-    implementation deps.compose.constraintlayout
     implementation deps.compose.preview
     debugImplementation deps.compose.previewDebug
 
@@ -87,10 +97,10 @@ ext {
     androidTestImplementation deps.compose.testUi
     debugImplementation deps.compose.testDebug
   }
-  
+
   paging = Group {
-    implementation deps.paging.runtime
-    implementation deps.paging.compose
+    api deps.paging.runtime
+    api deps.paging.compose
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,5 +129,6 @@ ext {
     androidTestImplementation deps.androidxJunit
     testImplementation deps.mockwebserver
     testImplementation deps.coroutines.test
+    implementation deps.testfairy
   }
 }
