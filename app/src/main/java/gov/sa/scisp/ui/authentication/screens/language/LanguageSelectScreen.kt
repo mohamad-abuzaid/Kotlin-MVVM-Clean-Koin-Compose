@@ -1,10 +1,9 @@
 package gov.sa.scisp.ui.authentication.screens.language
 
 import android.app.Activity
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -23,8 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import gov.sa.scisp.domain.utils.storage.ILocalPreferencesStorage
 import gov.sa.scisp.domain.utils.storage.Preference
 import gov.sa.scisp.utils.LocalizationHelper
-import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
-import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewModel
+import gov.sa.scisp.viewmodels.authentication.AuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.states.LanguageUiState
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
@@ -34,11 +32,10 @@ import org.koin.androidx.compose.koinViewModel
  * Email: mabuzaid@sure.com.sa
  */
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageSelectScreen(
     navController: NavController,
-    authViewModel: BaseAuthenticationViewModel = koinViewModel(),
+    authViewModel: AuthenticationViewModel = koinViewModel(),
     prefs: ILocalPreferencesStorage = get()
 ) {
 
@@ -47,10 +44,7 @@ fun LanguageSelectScreen(
 
     var selectedLanguage by remember {
         mutableStateOf(
-            prefs.getValue(
-                Preference.LANGUAGE_KEY,
-                "ar"
-            )
+            prefs.getString(Preference.LANGUAGE_KEY, "ar")
         )
     }
     var dropdownExpanded by remember { mutableStateOf(false) }
@@ -90,7 +84,7 @@ fun LanguageSelectScreen(
                             },
                             onClick = {
                                 dropdownExpanded = false
-                                prefs.putValue(Preference.LANGUAGE_KEY, language.code)
+                                prefs.putString(Preference.LANGUAGE_KEY, language.code)
                                 selectedLanguage = language.code
                                 LocalizationHelper.setLocale(context, selectedLanguage)
                                 (context as Activity).recreate()
@@ -116,7 +110,6 @@ fun LanguageSelectScreen(
 @Composable
 fun PreviewLanguageSelectScreen() {
     LanguageSelectScreen(
-        rememberNavController(),
-        PreviewAuthenticationViewModel()
+        rememberNavController()
     )
 }

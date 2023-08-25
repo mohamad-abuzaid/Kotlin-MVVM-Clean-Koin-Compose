@@ -1,8 +1,13 @@
 package gov.sa.scisp.ui.authentication.screens.onboard
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,9 +26,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import gov.sa.scisp.R
+import gov.sa.scisp.viewmodels.authentication.AuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
-import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
-import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 /**
@@ -31,11 +35,10 @@ import org.koin.androidx.compose.koinViewModel
  * Email: mabuzaid@sure.com.sa
  */
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OnboardScreen(
     navController: NavController,
-    authViewModel: BaseAuthenticationViewModel = koinViewModel()
+    authViewModel: AuthenticationViewModel = koinViewModel()
 ) {
 
     val loginUiState by authViewModel.loginUiState.collectAsState(initial = LoginUiState.Idle)
@@ -100,7 +103,6 @@ fun OnboardScreen(
 @Composable
 fun PreviewUserLoginScreen() {
     OnboardScreen(
-        rememberNavController(),
-        PreviewAuthenticationViewModel()
+        rememberNavController()
     )
 }

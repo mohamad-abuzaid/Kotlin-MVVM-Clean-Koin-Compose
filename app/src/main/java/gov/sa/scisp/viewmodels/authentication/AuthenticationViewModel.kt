@@ -1,6 +1,7 @@
 package gov.sa.scisp.viewmodels.authentication
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import gov.sa.scisp.domain.authentication.requests.language.LanguageRequest
 import gov.sa.scisp.domain.authentication.requests.login.UserLoginRequest
@@ -13,7 +14,6 @@ import gov.sa.scisp.domain.authentication.usecases.login.VvipLoginUseCase
 import gov.sa.scisp.domain.utils.wrappers.error_code.CallErrorCodes
 import gov.sa.scisp.models.authentication.languages.mappers.toLanguageDisplayList
 import gov.sa.scisp.models.authentication.login.mappers.toLoginDisplay
-import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.states.LanguageUiState
 import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
 import kotlinx.coroutines.Job
@@ -33,16 +33,16 @@ class AuthenticationViewModel(
     private val userLoginUseCase: UserLoginUseCase,
     private val vipLoginUseCase: VipLoginUseCase,
     private val vvipLoginUseCase: VvipLoginUseCase,
-) : BaseAuthenticationViewModel(application) {
+) : AndroidViewModel(application) {
 
     private val _loginUiState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
-    override val loginUiState: StateFlow<LoginUiState> = _loginUiState.asStateFlow()
+     val loginUiState: StateFlow<LoginUiState> = _loginUiState.asStateFlow()
 
     private val _languageUiState = MutableStateFlow<LanguageUiState>(LanguageUiState.Idle)
-    override val languageUiState: StateFlow<LanguageUiState> = _languageUiState.asStateFlow()
+     val languageUiState: StateFlow<LanguageUiState> = _languageUiState.asStateFlow()
 
     private var loginJob: Job? = null
-    override fun userLogin(nin: String) {
+     fun userLogin(nin: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading
@@ -61,7 +61,7 @@ class AuthenticationViewModel(
         }
     }
 
-    override fun vipLogin(username: String, password: String) {
+     fun vipLogin(username: String, password: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading
@@ -80,7 +80,7 @@ class AuthenticationViewModel(
         }
     }
 
-    override fun vvipLogin(username: String, password: String) {
+     fun vvipLogin(username: String, password: String) {
         loginJob?.cancel()
         loginJob = viewModelScope.launch {
             _loginUiState.value = LoginUiState.Loading
@@ -99,7 +99,7 @@ class AuthenticationViewModel(
         }
     }
 
-    override fun fetchLanguages(nin: String) {
+     fun fetchLanguages(nin: String) {
         viewModelScope.launch {
             _languageUiState.value = LanguageUiState.Loading
             try {

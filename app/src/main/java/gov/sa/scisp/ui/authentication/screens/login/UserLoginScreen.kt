@@ -21,9 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import gov.sa.scisp.R
+import gov.sa.scisp.viewmodels.authentication.AuthenticationViewModel
 import gov.sa.scisp.viewmodels.authentication.states.LoginUiState
-import gov.sa.scisp.viewmodels.authentication.base.BaseAuthenticationViewModel
-import gov.sa.scisp.viewmodels.authentication.base.PreviewAuthenticationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 /**
@@ -35,7 +34,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun UserLoginScreen(
     navController: NavController,
-    authViewModel: BaseAuthenticationViewModel = koinViewModel()
+    authViewModel: AuthenticationViewModel = koinViewModel()
 ) {
 
     val loginUiState by authViewModel.loginUiState.collectAsState(initial = LoginUiState.Idle)
@@ -100,7 +99,6 @@ fun UserLoginScreen(
 @Composable
 fun PreviewUserLoginScreen() {
     UserLoginScreen(
-        rememberNavController(),
-        PreviewAuthenticationViewModel()
+        rememberNavController()
     )
 }
