@@ -3,6 +3,7 @@ package gov.sa.scisp.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -10,8 +11,8 @@ import gov.sa.scisp.domain.utils.storage.ILocalPreferencesStorage
 import gov.sa.scisp.domain.utils.storage.Preference
 import gov.sa.scisp.navigation.Graph
 import gov.sa.scisp.navigation.main.mainNavGraph
-import gov.sa.scisp.ui.main.theme.SCTMTTheme
-import gov.sa.scisp.utils.LocalizationHelper
+import gov.sa.scisp.ui.theme.MCKCTheme
+import gov.sa.scisp.utils.LocalLang
 import org.koin.android.ext.android.inject
 
 /**
@@ -24,16 +25,19 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val context = LocalizationHelper.setLocale(
-            this,
-            prefs.getValue(Preference.LANGUAGE_KEY, "ar")
-        )
+
+        val lang = prefs.getString(Preference.LANGUAGE_KEY, "ar")
 
         setContent {
             navController = rememberNavController()
-            SCTMTTheme {
-                NavHost(navController = navController, startDestination = Graph.Main) {
-                    mainNavGraph(navController)
+
+            CompositionLocalProvider(
+                LocalLang provides lang
+            ) {
+                MCKCTheme {
+                    NavHost(navController = navController, startDestination = Graph.Main) {
+                        mainNavGraph(navController)
+                    }
                 }
             }
         }

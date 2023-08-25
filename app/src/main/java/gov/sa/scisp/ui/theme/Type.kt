@@ -1,4 +1,4 @@
-package gov.sa.scisp.ui.authentication.theme
+package gov.sa.scisp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
