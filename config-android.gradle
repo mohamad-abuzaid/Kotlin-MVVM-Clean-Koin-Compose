@@ -24,10 +24,6 @@ android {
     setProperty("archivesBaseName", "curr-v$versionName")
   }
 
-  dexOptions {
-    javaMaxHeapSize "4g"
-  }
-
   testOptions {
     unitTests {
       includeAndroidResources = true
