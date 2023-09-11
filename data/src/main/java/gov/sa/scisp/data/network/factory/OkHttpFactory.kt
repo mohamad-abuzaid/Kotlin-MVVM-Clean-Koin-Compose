@@ -1,5 +1,6 @@
 package gov.sa.scisp.data.network.factory
 
+import gov.sa.scisp.data.network.interceptors.JWTAuthenticator
 import gov.sa.scisp.data.network.interceptors.RequestHeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,10 @@ class OkHttpFactory {
 
     companion object {
 
-        fun getInstance(requestHeaderInterceptor: RequestHeaderInterceptor): OkHttpClient {
+        fun getInstance(
+            requestHeaderInterceptor: RequestHeaderInterceptor,
+            jwtAuthenticator: JWTAuthenticator
+        ): OkHttpClient {
             synchronized(this) {
                 val okHttpClientBuilder = okhttp3.OkHttpClient.Builder()
                     .connectTimeout(60, TimeUnit.SECONDS)
@@ -23,6 +27,7 @@ class OkHttpFactory {
                     .addInterceptor(
                         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
                     )
+                    .authenticator(jwtAuthenticator)
 
                 return okHttpClientBuilder.build()
             }

@@ -1,6 +1,6 @@
-package gov.sa.scisp.data.network.models.login.mappers
+package gov.sa.scisp.data.network.models.authentication.login.mappers
 
-import gov.sa.scisp.data.network.models.login.response.LoginRemote
+import gov.sa.scisp.data.network.models.authentication.login.response.LoginRemote
 import gov.sa.scisp.domain.authentication.models.login.LoginModel
 
 /**

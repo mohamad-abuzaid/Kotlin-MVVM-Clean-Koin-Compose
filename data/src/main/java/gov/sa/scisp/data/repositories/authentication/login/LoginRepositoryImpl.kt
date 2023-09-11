@@ -1,9 +1,9 @@
 package gov.sa.scisp.data.repositories.authentication.login
 
 import gov.sa.scisp.data.network.factory.MapThrowableToCallFailure
-import gov.sa.scisp.data.network.models.login.failures.LoginFailure
-import gov.sa.scisp.data.network.models.login.mappers.toLoginModel
-import gov.sa.scisp.data.network.service.LoginApiService
+import gov.sa.scisp.data.network.models.authentication.login.failures.LoginFailure
+import gov.sa.scisp.data.network.models.authentication.login.mappers.toLoginModel
+import gov.sa.scisp.data.network.service.authentication.LoginApiService
 import gov.sa.scisp.domain.authentication.models.login.LoginModel
 import gov.sa.scisp.domain.authentication.repositories.login.LoginRepository
 import gov.sa.scisp.domain.authentication.requests.login.UserLoginRequest

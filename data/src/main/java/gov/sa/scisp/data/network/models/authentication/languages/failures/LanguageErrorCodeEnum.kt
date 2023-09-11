@@ -1,4 +1,4 @@
-package gov.sa.scisp.data.network.models.languages.failures
+package gov.sa.scisp.data.network.models.authentication.languages.failures
 
 /**
  * Created by "Mohamad Abuzaid" on 10/05/2023.

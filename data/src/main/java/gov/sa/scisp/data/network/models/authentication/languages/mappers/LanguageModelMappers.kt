@@ -1,6 +1,6 @@
-package gov.sa.scisp.data.network.models.languages.mappers
+package gov.sa.scisp.data.network.models.authentication.languages.mappers
 
-import gov.sa.scisp.data.network.models.languages.response.LanguageRemote
+import gov.sa.scisp.data.network.models.authentication.languages.response.LanguageRemote
 import gov.sa.scisp.domain.authentication.models.login.LanguageModel
 
 /**

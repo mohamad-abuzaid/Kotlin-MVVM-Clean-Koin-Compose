@@ -1,9 +1,9 @@
 package gov.sa.scisp.data.repositories.authentication.languages
 
 import gov.sa.scisp.data.network.factory.MapThrowableToCallFailure
-import gov.sa.scisp.data.network.models.languages.failures.LanguageFailure
-import gov.sa.scisp.data.network.models.languages.mappers.toLanguageModelList
-import gov.sa.scisp.data.network.service.LanguageApiService
+import gov.sa.scisp.data.network.models.authentication.languages.failures.LanguageFailure
+import gov.sa.scisp.data.network.models.authentication.languages.mappers.toLanguageModelList
+import gov.sa.scisp.data.network.service.authentication.LanguageApiService
 import gov.sa.scisp.domain.authentication.models.login.LanguageModel
 import gov.sa.scisp.domain.authentication.repositories.language.LanguageRepository
 import gov.sa.scisp.domain.authentication.requests.language.LanguageRequest

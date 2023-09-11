@@ -1,8 +1,8 @@
 package gov.sa.scisp.di
 
 import gov.sa.scisp.data.network.di.retrofitModule
-import gov.sa.scisp.data.network.service.LanguageApiService
-import gov.sa.scisp.data.network.service.LoginApiService
+import gov.sa.scisp.data.network.service.authentication.LanguageApiService
+import gov.sa.scisp.data.network.service.authentication.LoginApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 

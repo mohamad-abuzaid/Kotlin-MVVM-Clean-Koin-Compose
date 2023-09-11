@@ -1,4 +1,4 @@
-package gov.sa.scisp.data.network.models.languages.failures
+package gov.sa.scisp.data.network.models.authentication.languages.failures
 
 import gov.sa.scisp.domain.utils.wrappers.CallFailure
 import gov.sa.scisp.domain.utils.wrappers.error_code.LanguageErrorCodes

@@ -1,4 +1,4 @@
-package gov.sa.scisp.data.network.models.login.failures
+package gov.sa.scisp.data.network.models.authentication.login.failures
 
 import gov.sa.scisp.domain.utils.wrappers.CallFailure
 import gov.sa.scisp.domain.utils.wrappers.error_code.LoginErrorCodes

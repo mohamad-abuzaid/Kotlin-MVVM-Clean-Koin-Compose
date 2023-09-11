@@ -1,4 +1,4 @@
-package gov.sa.scisp.data.network.models.login.response
+package gov.sa.scisp.data.network.models.authentication.login.response
 import com.google.gson.annotations.SerializedName
 
 /**

@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName
  * Email: mabuzaid@sure.com.sa
  */
 data class RemoteResponse<T>(
+    @SerializedName("success")
+    val success: Boolean,
     @SerializedName("errorCode")
     val errorCode: Int,
     @SerializedName("data")

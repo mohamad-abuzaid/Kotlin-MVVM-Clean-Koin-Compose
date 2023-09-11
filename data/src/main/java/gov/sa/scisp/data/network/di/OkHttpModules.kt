@@ -2,6 +2,7 @@ package gov.sa.scisp.data.network.di
 
 import gov.sa.scisp.data.network.factory.OkHttpFactory
 import gov.sa.scisp.data.network.interceptors.RequestHeaderInterceptor
+import gov.sa.scisp.data.network.interceptors.JWTAuthenticator
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
@@ -11,6 +12,7 @@ import org.koin.dsl.module
  */
 val okhttpModule = module {
     singleOf(::RequestHeaderInterceptor)
+    singleOf(::JWTAuthenticator)
 
-    single { OkHttpFactory.getInstance(requestHeaderInterceptor = get()) }
+    single { OkHttpFactory.getInstance(requestHeaderInterceptor = get(), jwtAuthenticator = get()) }
 }
