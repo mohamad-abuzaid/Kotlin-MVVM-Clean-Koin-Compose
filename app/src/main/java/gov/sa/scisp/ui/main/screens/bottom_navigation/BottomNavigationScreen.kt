@@ -1,4 +1,4 @@
-package gov.sa.scisp.viewmodels.main.bottom_navigation
+package gov.sa.scisp.ui.main.screens.bottom_navigation
 
 import android.app.Activity
 import android.content.Intent
