@@ -12,4 +12,5 @@ interface ITokenManager {
     fun getToken(): String
     fun fetchNewAccessToken(): String?
     fun logout()
+    fun resetTokenState()
 }

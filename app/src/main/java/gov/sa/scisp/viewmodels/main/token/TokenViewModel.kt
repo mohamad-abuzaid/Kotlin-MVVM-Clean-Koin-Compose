@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
  */
 class TokenViewModel(
     application: Application,
-    tokenManager: ITokenManager,
+    private val tokenManager: ITokenManager,
 ) : AndroidViewModel(application) {
 
     private val _tokenState = MutableStateFlow(false)
@@ -28,5 +28,10 @@ class TokenViewModel(
                 _tokenState.value = shouldLogout
             }
         }
+    }
+
+    fun resetTokenState() {
+        _tokenState.value = false
+        tokenManager.resetTokenState()
     }
 }

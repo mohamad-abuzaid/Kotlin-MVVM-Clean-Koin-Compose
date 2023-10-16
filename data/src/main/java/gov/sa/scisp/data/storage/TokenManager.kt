@@ -71,4 +71,8 @@ class TokenManager(
         prefs.clearToken()
         _logoutRequired.value = true
     }
+
+    override fun resetTokenState() {
+        _logoutRequired.value = false
+    }
 }
