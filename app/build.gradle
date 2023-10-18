@@ -6,7 +6,7 @@ apply from: '../dependencies-groups.gradle'
 apply from: '../dependencies-versions.gradle'
 
 android {
-    namespace 'gov.sa.scisp'
+    namespace 'com.compose.clean'
 
     packagingOptions {
         resources {

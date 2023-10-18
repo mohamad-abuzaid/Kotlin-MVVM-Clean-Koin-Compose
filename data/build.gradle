@@ -5,7 +5,7 @@ apply from: '../config-properties.gradle'
 apply from: '../dependencies-groups.gradle'
 
 android {
-    namespace 'gov.sa.scisp.data'
+    namespace 'com.compose.clean.data'
 }
 
 dependencies {
