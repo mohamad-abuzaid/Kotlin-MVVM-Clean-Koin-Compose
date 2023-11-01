@@ -15,7 +15,7 @@ class JWTAuthenticator(private val tokenManager: ITokenManager) : Authenticator 
     override fun authenticate(route: Route?, response: Response): Request? {
         // If we already tried to refresh the token and it still failed,
         // we redirect the user to the login screen.
-        if (response.request.header("Authorization") != null) {
+        if (response.code == 401 || response.code == 403) {
             tokenManager.logout()
             return null
         }
