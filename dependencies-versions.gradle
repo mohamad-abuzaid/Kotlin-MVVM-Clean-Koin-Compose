@@ -19,7 +19,8 @@ ext.versions = [
         'okHttp': '4.8.0',
         'parceler': '1.1.12',
 
-        'koin': '3.2.2',
+        'koin': '3.4.3',
+        'koin_compose': '3.4.6',
         'coroutines': '1.6.4',
         'activity': '1.6.1',
         'appcompat': '1.6.1',

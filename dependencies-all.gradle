@@ -23,7 +23,7 @@ ext.deps = [
         'koin'         : [
                 'core'   : "io.insert-koin:koin-core:$versions.koin",
                 'android': "io.insert-koin:koin-android:$versions.koin",
-                'compose': "io.insert-koin:koin-androidx-compose:$versions.koin",
+                'compose': "io.insert-koin:koin-androidx-compose:$versions.koin_compose",
         ],
         'coroutines'   : [
                 'core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",

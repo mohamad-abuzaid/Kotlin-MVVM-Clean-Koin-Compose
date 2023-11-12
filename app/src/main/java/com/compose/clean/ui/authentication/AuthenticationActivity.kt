@@ -12,6 +12,7 @@ import com.compose.clean.domain.utils.storage.Preference
 import com.compose.clean.navigation.Graph
 import com.compose.clean.navigation.authentication.authNavGraph
 import com.compose.clean.ui.theme.MCKCTheme
+import com.compose.clean.utils.C
 import com.compose.clean.utils.LocalLang
 import org.koin.android.ext.android.inject
 
@@ -30,14 +31,11 @@ class AuthenticationActivity : ComponentActivity() {
 
         setContent {
             navController = rememberNavController()
+            val skipToScreen = intent.extras?.getInt("skip_to_screen") ?: C.SPLASH_SCREEN
 
-            CompositionLocalProvider(
-                LocalLang provides lang
-            ) {
-                MCKCTheme {
-                    NavHost(navController = navController, startDestination = Graph.AUTH) {
-                        authNavGraph(navController)
-                    }
+            MCKCTheme {
+                NavHost(navController = navController, startDestination = Graph.AUTH) {
+                    authNavGraph(navController, skipToScreen)
                 }
             }
         }

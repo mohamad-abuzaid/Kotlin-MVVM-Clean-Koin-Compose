@@ -7,19 +7,27 @@ import androidx.navigation.navigation
 import com.compose.clean.navigation.Graph
 import com.compose.clean.ui.authentication.screens.language.LanguageSelectScreen
 import com.compose.clean.ui.authentication.screens.login.LoginScreen
-import com.compose.clean.ui.authentication.screens.onboard.OnboardScreen
+import com.compose.clean.ui.authentication.screens.splash.SplashScreen
+import com.compose.clean.utils.C
 
 /**
  * Created by "Mohamad Abuzaid" on 06/05/2023.
  * Email: mabuzaid@sure.com.sa
  */
-fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.authNavGraph(
+    navController: NavHostController,
+    skipToScreen: Int
+) {
     navigation(
         route = Graph.AUTH,
-        startDestination = AuthScreens.LanguageSelect.route
+        startDestination = when (skipToScreen) {
+            C.LANG_SCREEN -> AuthScreens.LanguageSelect.route
+            C.LOGIN_SCREEN -> AuthScreens.Login.route
+            else -> AuthScreens.Splash.route
+        }
     ) {
+        composable(route = AuthScreens.Splash.route) { SplashScreen(navController) }
         composable(route = AuthScreens.LanguageSelect.route) { LanguageSelectScreen(navController) }
-        composable(route = AuthScreens.Onboard.route) { OnboardScreen(navController) }
         composable(route = AuthScreens.Login.route) { LoginScreen(navController) }
 
 //        composable(

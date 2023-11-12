@@ -5,8 +5,8 @@ package com.compose.clean.navigation.authentication
  * Email: mabuzaid@sure.com.sa
  */
 sealed class AuthScreens(val route: String) {
+    object Splash : AuthScreens("splash_screen")
     object LanguageSelect : AuthScreens("language_select_screen")
-    object Onboard : AuthScreens("onboard_screen")
     object Login : AuthScreens("login_screen")
 
     // pass args ext function
